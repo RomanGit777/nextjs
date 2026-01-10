@@ -1,6 +1,15 @@
 import {FC} from "react";
+import {Metadata} from "next";
 type Props = { params: { id: string } };
-const UsersIdPage: FC<Props> = async ({params}: Props) => {
+
+export const generateMetadata = async ({params}: Props): Promise<Metadata> => {
+    const {id} = await params;
+    return {
+        title: 'LayoutUserId' + id,
+    }
+}
+
+const UserIdPage: FC<Props> = async ({params}: Props) => {
     const {id} = await params;
     return (
         <div>
@@ -8,4 +17,4 @@ const UsersIdPage: FC<Props> = async ({params}: Props) => {
         </div>
     );
 };
-export default UsersIdPage;
+export default UserIdPage;
