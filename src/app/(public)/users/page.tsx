@@ -1,13 +1,9 @@
-import {getAllUsers} from "@/services/api.services";
-import Link from "next/link";
+import {UsersComponent} from "@/components/users/UsersComponent";
 
-const UsersPage = async () => {
-    const users = await getAllUsers();
+const UsersPage =  () => {
 
     return (
-        <div>{users.map(u => (
-            <div key={u.id}> <Link href={'/users/'+u.id}>{u.name} {u.email}</Link></div>
-        ))}</div>
+       <><UsersComponent/></>
     );
 };
 export default UsersPage;
