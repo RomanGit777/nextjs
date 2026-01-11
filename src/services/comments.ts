@@ -6,3 +6,8 @@ export const getComments = async (): Promise<IComments[]> => {
     if (!res.ok) throw new Error("Error: Could not fetch comments");
     return res.json();
 }
+export const getComment = async (id: string): Promise<IComments> => {
+    const res = await fetch(baseUrl + "/comments/" + id);
+    if (!res.ok) throw new Error("Error: Could not fetch comment");
+    return res.json();
+}
