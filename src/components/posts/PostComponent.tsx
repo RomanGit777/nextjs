@@ -7,6 +7,8 @@ interface PostComponentProps {
 
 export const PostComponent = ({post}: PostComponentProps) => {
     return (
-        <div><Link href={'/posts/'+post.id}>{post.id} {post.title}</Link></div>
+        <div>
+            <Link href={{pathname: '/posts/'+ post.id, query: {data: JSON.stringify(post)}}}>{post.id} {post.title}</Link>
+        </div>
     );
 };

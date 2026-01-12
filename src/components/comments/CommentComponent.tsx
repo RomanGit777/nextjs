@@ -7,6 +7,8 @@ interface CommentComponentProps {
 
 export const CommentComponent = ({comment}: CommentComponentProps) => {
     return (
-        <div><Link href={'/comments/'+comment.id}>{comment.id}{comment.name}</Link></div>
+        <div>
+            <Link href={{pathname: '/comments/'+comment.id, query: {data: JSON.stringify(comment)}}}>{comment.id}{comment.name}</Link>
+        </div>
     );
 };
