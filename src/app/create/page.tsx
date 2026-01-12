@@ -1,6 +1,8 @@
+import {CreateCarComponent} from "@/components/createCar/CreateCarComponent";
+
 const CreateCarPage = () => {
     return (
-        <div>create car here</div>
+        <div><CreateCarComponent/></div>
     );
 };
 export default CreateCarPage;
