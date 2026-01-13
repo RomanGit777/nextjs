@@ -1,5 +1,5 @@
 import {CarComponent} from "@/components/cars/CarComponent";
-import {getAllCars} from "@/services/cars";
+import {getAllCars} from "@/services/carService";
 
 export const CarsComponent = async () => {
     const cars = await getAllCars();
