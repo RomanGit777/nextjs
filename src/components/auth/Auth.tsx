@@ -14,8 +14,11 @@ export const Auth = () => {
         resolver: joiResolver(userValidator)
     });
 
-    const customHandler = (formDataProps: IFormProps) => {
-        console.log(formDataProps);
+    const customHandler = async (formData: IFormProps) => {
+        await fetch('http://localhost:3000/auth', {
+            method: "POST",
+            body: JSON.stringify(formData)
+        })
     };
 
     return (
