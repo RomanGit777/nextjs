@@ -1,7 +1,8 @@
-import {createCarAction} from "@/app/create/actions";
+'use client';
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carValidator} from "@/validators/carValidator";
+import {createCarAction} from "@/app/create/actions";
 
 interface IFormProps {
     brand: string;
@@ -11,14 +12,11 @@ interface IFormProps {
 
 export const CreateCarComponent = () => {
 
-    const {handleSubmit, register, formState: {errors}} = useForm<IFormProps>({mode: "all", resolver: joiResolver(carValidator)});
+    const { register, formState: {errors, isValid}} = useForm<IFormProps>({mode: "all", resolver: joiResolver(carValidator)});
 
-    const customHandler = (formDataProps: IFormProps) => {
-        createCarAction(formDataProps)
-    };
     return (
         <div>
-            <form onSubmit={handleSubmit(customHandler)}>
+            <form action={createCarAction}>
                 <label>
                 <input type="text" {...register('brand')} placeholder={'Enter brand'}/>
                     {errors.brand && <div>{errors.brand.message}</div>}
@@ -32,7 +30,7 @@ export const CreateCarComponent = () => {
                     {errors.year && <div>{errors.year.message}</div>}
                 </label>
 
-                <button type={'submit'}>submit</button>
+                <button type={'submit'} disabled={!isValid}>submit</button>
             </form>
         </div>
     );
